@@ -4,36 +4,47 @@ public class Que2{
 	public static void main(String[] args)
 	{
 		Scanner sc =new Scanner(System.in);
-		int n;
+		int size_of_arr;
 
 		 System.out.println("Enter the size of Array: ");
-		  n = sc.nextInt();
+		  size_of_arr = sc.nextInt();
+		  if(size_of_arr<=0)
+		  {
+		  	while(size_of_arr<0)
+		  	{
+			  	System.out.println("Size of array should be greater than or equal to 0 .Enter Again .");
+			  	size_of_arr = sc.nextInt();
+		  	}
 
-		  int a[];
-		  a= new int[n];
+		  }
+
+		  int arr[];
+		  arr= new int[size_of_arr];
 
 		  int count[]=new int[21];
 
-		  for(int i=0;i<21;i++)
+		  for(int it=0;it<21;it++)
 		  {
-		  	count[i]=0;
+		  	count[it]=0;
 		  }
 
-		  int k=0;
+		  int temp=0;
 		  System.out.println("Enter the elements of the array between 0 and 20 : ");
-		  for(int i=0;i<n;i++)
+
+		  for(int i=0;i<size_of_arr;i++)
 		  {
-		  	k=sc.nextInt();
-		  	while(k<0||k>20)
+		  	temp=sc.nextInt();
+		  	while(temp<0||temp>20)
 		  	{
 		  		System.out.println("Entered value is out of range.Please enter a value between 0 and 20 ");
-		  		k=sc.nextInt();
+		  		temp=sc.nextInt();
 		  	}
-		  	a[i]=k;
+		  	arr[i]=temp;
 
-		  	count[a[i]]++;
+		  	count[arr[i]]++;
 		  }
-		  int it=0;
+
+		  int cur_size=0;
 		  for(int i=0;i<21;i++)
 		  {
 		  	if(count[i]==0)
@@ -42,19 +53,19 @@ public class Que2{
 		  	}
 		  	else
 		  	{
-		  		for(int j=it;j<it+count[i];j++ )
+		  		for(int j=cur_size;j<cur_size+count[i];j++ )
 		  		{
-		  			a[j]=i;
+		  			arr[j]=i;
 		  		}
-		  		it+=count[i];
+		  		cur_size+=count[i];
 
 		  	}
 		  }
 
 
-		  for(int i=0;i<n;i++)
+		  for(int i=0;i<size_of_arr;i++)
 		  {
-		  	System.out.print(a[i]+" ");
+		  	System.out.print(arr[i]+" ");
 		  }
 	}
 }
